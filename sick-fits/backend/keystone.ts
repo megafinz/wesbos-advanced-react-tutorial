@@ -9,6 +9,7 @@ import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
 
 import 'dotenv/config';
+import { insertSeedData } from './seed-data';
 
 const dbUrl =
   process.env.DATABASE_URL ||
@@ -40,7 +41,11 @@ export default withAuth(
     db: {
       adapter: 'mongoose',
       url: dbUrl,
-      // TODO: add data seeding here
+      onConnect: async (ks) => {
+        if (process.argv.includes('--seed-data')) {
+          await insertSeedData(ks);
+        }
+      },
     },
     lists: createSchema({
       User,
