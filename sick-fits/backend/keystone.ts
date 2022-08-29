@@ -7,6 +7,7 @@ import { createAuth } from '@keystone-next/auth';
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
+import { CartItem } from './schemas/CartItem';
 import { sendPasswordResetEmail } from './lib/mail';
 import { insertSeedData } from './seed-data';
 
@@ -57,10 +58,12 @@ export default withAuth(
       User,
       Product,
       ProductImage,
+      CartItem,
     }),
     ui: {
       // TODO: change this for roles
-      isAccessAllowed: ({ session }) => !!session?.data,
+      isAccessAllowed: ({ session }) =>
+        session && Object.keys(session).includes('data'),
     },
     session: withItemData(statelessSessions(sessionConfig), {
       User: 'id',
