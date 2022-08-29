@@ -7,9 +7,10 @@ import { createAuth } from '@keystone-next/auth';
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
+import { sendPasswordResetEmail } from './lib/mail';
+import { insertSeedData } from './seed-data';
 
 import 'dotenv/config';
-import { insertSeedData } from './seed-data';
 
 const dbUrl =
   process.env.DATABASE_URL ||
@@ -27,6 +28,11 @@ const { withAuth } = createAuth({
   initFirstItem: {
     fields: ['name', 'email', 'password'],
     // TODO: add initial roles
+  },
+  passwordResetLink: {
+    async sendToken(args) {
+      await sendPasswordResetEmail(args.token, args.identity);
+    },
   },
 });
 
