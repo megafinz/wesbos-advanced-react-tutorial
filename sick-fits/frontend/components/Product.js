@@ -4,6 +4,7 @@ import ItemStyles from './styles/ItemStyles';
 import Title from './styles/Title';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
+import AddToCart from './AddToCart';
 import DeleteProduct from './DeleteProduct';
 
 export default function Product({ product }) {
@@ -29,9 +30,10 @@ export default function Product({ product }) {
             },
           }}
         >
-          Edit ✏️
+          ✏️ Edit
         </Link>
-        <DeleteProduct id={product.id}>Delete 🗑</DeleteProduct>
+        <AddToCart productId={product.id} />
+        <DeleteProduct id={product.id}>🗑 Delete</DeleteProduct>
       </div>
     </ItemStyles>
   );

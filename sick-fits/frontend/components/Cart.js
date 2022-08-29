@@ -6,8 +6,8 @@ import CloseButton from './styles/CloseButton';
 import Supreme from './styles/Supreme';
 import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
-import { useUser } from './User';
 import { useCart } from '../lib/cartState';
+import { useUser } from './User';
 
 const CartItemStyles = styled.li`
   padding: 1rem 0;
