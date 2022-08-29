@@ -63,7 +63,7 @@ export default function UpdateProduct({ id }) {
     <Form
       onSubmit={async (e) => {
         e.preventDefault();
-        const res = await updateProduct();
+        await updateProduct();
       }}
     >
       <DisplayError error={error || updateError} />

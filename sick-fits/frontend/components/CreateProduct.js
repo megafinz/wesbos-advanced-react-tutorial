@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import useForm from '../lib/useForm';
 import Form from './styles/Form';
 import DisplayError from './ErrorMessage';
-import { ALL_PRODUCTS_QUERY } from './Products';
+import { ALL_PRODUCTS_QUERY } from './ProductList';
 
 const CREATE_PRODUCT_MUTATION = gql`
   mutation CREATE_PRODUCT_MUTATION(
