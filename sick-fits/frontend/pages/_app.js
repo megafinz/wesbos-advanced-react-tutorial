@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
 import { ApolloProvider } from '@apollo/client';
 import withData from '../lib/withData';
+import { CartStateProvider } from '../lib/cartState';
 import Page from '../components/Page';
 
 import '../components/styles/nprogress.css';
@@ -16,9 +17,11 @@ Router.events.on('routeChangeError', () => NProgress.done());
 function App({ Component, pageProps, apollo }) {
   return (
     <ApolloProvider client={apollo}>
-      <Page>
-        <Component {...pageProps} />
-      </Page>
+      <CartStateProvider>
+        <Page>
+          <Component {...pageProps} />
+        </Page>
+      </CartStateProvider>
     </ApolloProvider>
   );
 }
