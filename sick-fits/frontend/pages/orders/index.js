@@ -1,5 +1,10 @@
 import OrderList from '../../components/OrderList';
+import PleaseSignIn from '../../components/PleaseSignIn';
 
 export default function OrdersPage() {
-  return <OrderList />;
+  return (
+    <PleaseSignIn>
+      <OrderList />
+    </PleaseSignIn>
+  );
 }

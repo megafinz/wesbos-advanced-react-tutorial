@@ -9,12 +9,14 @@ import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
+import { Role } from './schemas/Role';
 import { User } from './schemas/User';
 import { sendPasswordResetEmail } from './lib/mail';
 import { insertSeedData } from './seed-data';
 import { extendGraphqlSchema } from './mutations';
 
 import 'dotenv/config';
+import { permissionsList } from './schemas/fields';
 
 const dbUrl =
   process.env.DATABASE_URL ||
@@ -58,12 +60,13 @@ export default withAuth(
       },
     },
     lists: createSchema({
-      User,
-      Product,
-      ProductImage,
       CartItem,
       OrderItem,
       Order,
+      Product,
+      ProductImage,
+      Role,
+      User,
     }),
     extendGraphqlSchema,
     ui: {
@@ -72,7 +75,7 @@ export default withAuth(
         session && Object.keys(session).includes('data'),
     },
     session: withItemData(statelessSessions(sessionConfig), {
-      User: 'id',
+      User: `id name email role { ${permissionsList.join(' ')} }`,
     }),
   })
 );
