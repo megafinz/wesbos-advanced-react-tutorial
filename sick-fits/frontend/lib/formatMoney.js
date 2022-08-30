@@ -5,5 +5,5 @@ export default function formatMoney(amount) {
     minimumFractionDigits: 2,
   };
   const formatter = new Intl.NumberFormat('en-us', options);
-  return formatter.format(amount);
+  return formatter.format(amount / 100);
 }

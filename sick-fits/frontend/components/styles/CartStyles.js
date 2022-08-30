@@ -5,7 +5,6 @@ const CartStyles = styled.div`
   position: relative;
   background: white;
   position: fixed;
-  height: 100%;
   top: 0;
   right: 0;
   width: 40%;
@@ -27,8 +26,6 @@ const CartStyles = styled.div`
     border-top: 10px double var(--black);
     margin-top: 2rem;
     padding-top: 2rem;
-    display: grid;
-    grid-template-columns: auto auto;
     align-items: center;
     font-size: 3rem;
     font-weight: 900;
