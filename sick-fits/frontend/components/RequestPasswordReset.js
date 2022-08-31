@@ -4,7 +4,7 @@ import useForm from '../lib/useForm';
 import DisplayError from './ErrorMessage';
 import Form from './styles/Form';
 
-const REQUEST_PASSWORD_RESET_MUTATION = gql`
+export const REQUEST_PASSWORD_RESET_MUTATION = gql`
   mutation REQUEST_PASSWORD_RESET_MUTATION($email: String!) {
     sendUserPasswordResetLink(email: $email) {
       message
