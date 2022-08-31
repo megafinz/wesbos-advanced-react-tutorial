@@ -7,7 +7,7 @@ import PaginationStyles from './styles/PaginationStyles';
 import DisplayError from './ErrorMessage';
 import { perPage } from '../config';
 
-const PAGINATION_QUERY = gql`
+export const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY {
     _allProductsMeta {
       count
@@ -27,7 +27,7 @@ export default function Pagination({ page }) {
   const pageCount = Math.ceil(count / perPage);
   const currentPage = Math.min(Math.max(1, page), pageCount);
   return (
-    <PaginationStyles>
+    <PaginationStyles data-testid="pagination-container">
       <Head>
         <title>
           Sick Fits — Page {currentPage} of {pageCount}
