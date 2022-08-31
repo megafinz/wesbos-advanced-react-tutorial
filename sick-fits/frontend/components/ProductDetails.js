@@ -19,7 +19,7 @@ const ProductStyles = styled.div`
   }
 `;
 
-const PRODUCT_DETAILS_QUERY = gql`
+export const PRODUCT_DETAILS_QUERY = gql`
   query PRODUCT_DETAILS_QUERY($id: ID!) {
     Product(where: { id: $id }) {
       id
@@ -50,7 +50,7 @@ export default function ProductDetails({ id }) {
   }
   const { Product } = data;
   return (
-    <ProductStyles>
+    <ProductStyles data-testid="product-details-container">
       <Head>
         <title>Sick Fits | {Product.name}</title>
       </Head>
